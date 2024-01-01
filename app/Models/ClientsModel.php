@@ -26,14 +26,15 @@ class ClientsModel extends Model
      */
     public function insertClient($data)
     {
-        $add = $this->generate->insert($data);
+        $add = $this->db->table($this->table)->insert($data);
         if($add)
         {
-            return $add;
+            return $this->db->insertID();
         }
         else
         {
             return false;
         }
     }
+
 }

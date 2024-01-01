@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\AuthController;
 use CodeIgniter\Router\RouteCollection;
 
 /**
@@ -10,12 +11,16 @@ use CodeIgniter\Router\RouteCollection;
 
     // -> LOGIN
     $routes->get('/', 'AuthController::index');
-    $routes->post('/auth', 'UserController::verifyUser');
+    $routes->post('/auth', 'AuthController::init');
+    $routes->get('/auth/readToken', 'AuthController::readToken');
 
     // -> CLIENTS
     $routes->get('/clients','ClientsController::index');
-    $routes->post('/clients/add','ClientsController::insert');
-    $routes->get('/clients/getall','ClientsController::getAllClients');
+    $routes->post('/clients/add','ClientsController::insert', ["filter"=> "auth"]);
+    $routes->post('/clients/edit','ClientsController::alter', ["filter"=> "auth"]);
+    $routes->post('/clients/delete','ClientsController::drop', ["filter"=> "auth"]);
+    $routes->get('/clients/getbyid/(:num)','ClientsController::getCLientByID/$1', ["filter"=> "auth"]);
+    $routes->get('/clients/getall','ClientsController::getAllClients', ["filter"=> "auth"]);
 
     // -> USERS
     $routes->post('/users/add','UsersController::createUser');

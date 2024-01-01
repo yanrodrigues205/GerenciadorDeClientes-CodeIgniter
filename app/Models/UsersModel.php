@@ -7,7 +7,7 @@ class UsersModel extends Model
 {
     protected $table = "users";
     protected $generate;
-    protected $fields = ["name", "email", "password"];
+    public $allowedFields = ["name", "email", "password"];
 
    
     public function __construct(){
@@ -27,10 +27,10 @@ class UsersModel extends Model
     public function insertUser($data)
     {
         
-        $add = $this->generate->insert($data);
-        if($add)
+        $add_user = $this->db->table($this->table)->insert($data);
+        if($add_user)
         {
-            return $add;
+            return $this->db->insertID();
         }
         else
         {
