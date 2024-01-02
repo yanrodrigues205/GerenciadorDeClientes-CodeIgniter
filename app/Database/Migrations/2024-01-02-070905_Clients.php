@@ -43,7 +43,7 @@ class Clients extends Migration
             "updated_at" => [
                 "type" => "TIMESTAMP",
                 "default" => new RawSql("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-            ]
+            ] 
         ]);
 
         $this->forge->addPrimaryKey("id");
