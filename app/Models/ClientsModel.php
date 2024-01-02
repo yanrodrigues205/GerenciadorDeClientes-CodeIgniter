@@ -37,4 +37,13 @@ class ClientsModel extends Model
         }
     }
 
+    /**
+     * @param $field = table value column
+     */
+
+    public function getField(string $field)
+    {
+        return $this->select($field)->findAll();
+    }
+
 }

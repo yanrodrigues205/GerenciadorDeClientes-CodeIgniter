@@ -21,6 +21,8 @@ use CodeIgniter\Router\RouteCollection;
     $routes->post('/clients/delete','ClientsController::drop', ["filter"=> "auth"]);
     $routes->get('/clients/getbyid/(:num)','ClientsController::getCLientByID/$1', ["filter"=> "auth"]);
     $routes->get('/clients/getall','ClientsController::getAllClients', ["filter"=> "auth"]);
+    $routes->get('/clients/phoneStatesPercent','ClientsController::getAllPhones', ["filter"=> "auth"]);
+
 
     // -> USERS
     $routes->post('/users/add','UsersController::createUser');

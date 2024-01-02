@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js" integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js" integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header>
@@ -24,7 +25,7 @@
                     <div class="col-6">
                     </div>
                     <div class="col">
-                        <div><i class="fa-solid fa-user"></i>&nbsp;<span id="profile"></span></div>
+                        <div><i class="fa-solid fa-user" style="font-size: 18px; color: gray;"></i>&nbsp;<span id="profile"></span></div>
                     </div>
                 </div>
             </div>
@@ -38,26 +39,27 @@
             </div>
             </div>
         </div>
+
         <div class="container-md">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Accordion Item #1
-                    </button>
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        </button>
                     </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div style="align-items: center;display: flex;flex-direction: column;">
+                                <strong>Telefone dos clientes associados as regiões do Brasil</strong>
+                                <div id="chart">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-md">
-            <div class="column">
-                <div id="chart">
-                </div>
-            </div>
-        </div>
+        </div><br/>
+
         <div class="container-md">
             <button type="button" title="Adicionar cliente" class="btn btn-success" id="btnAdd" data-bs-toggle="modal" data-bs-target="#clientModal">
                 <i class="fa-solid fa-plus"></i>
@@ -205,9 +207,14 @@
             
             
 
+            tableClients.on( 'search.dt', async () => {
+                await events();
+            } );
             
+            tableClients.on( 'page.dt', async () => {
+                await events();
+            } );
             
-
             
         
             
@@ -527,55 +534,68 @@
                             <a data-id="${resp.data_clients[i].id}" title="Excluir cliente ID ${resp.data_clients[i].id}" class="btn btn-danger" id="btnDelete"><i class="fa-solid fa-trash" style="color: white"></i></a>`
                     ]).draw();
                 }
-                // //CREATE CHART
-                // var chart = new CanvasJS.Chart("chart", {
-                //         animationEnabled: true,
-                //         interactivityEnabled: true,
-                //         exploded: true,
-                //         width: 400,
-                //         height: 250,
-                //         legend: {
-                //             horizontalAlign: "left", // "center" , "right"
-                //             verticalAlign: "center",  // "top" , "bottom"
-                //             fontSize: 12
-                //         },
-                //         data: [{
-                //             type: "pie",
-                //             theme: "light1",
-                //             backgroundColor: "transparent",
-                //             showInLegend: true,
-                //             toolTipContent: "{name}: <strong>{y}%</strong>",
-                //             indexLabel: "{name} - {y}%",
-                //             dataPoints: [
-                //                 { y: 26, name: "School Aid", exploded: true },
-                //                 { y: 20, name: "Medical Aid" },
-                //                 { y: 5, name: "Debt/Capital" },
-                //                 { y: 3, name: "Elected Officials" },
-                //                 { y: 7, name: "University" },
-                //                 { y: 17, name: "Executive" },
-                //                 { y: 22, name: "Other Local Assistance"}
-                //             ]
-                //         }]
-                //     });
-                //     chart.render();
-                //     for(let i =0;i < $(".canvasjs-chart-canvas").length;i++)
-                //     {
-                //         $(".canvasjs-chart-canvas")[i].style.position = "unset";
-                //         $(".canvasjs-chart-canvas")[i].style.margin = "0 auto";
-                //         if(i > 0)
-                //             $(".canvasjs-chart-canvas")[i].style.display = "none";
-                //         else
-                //             $(".canvasjs-chart-canvas")[i].style.display = "flex";
-                //     }
-                //     $(".canvasjs-chart-credit").remove();
-                    
 
 
-
+                await AllPhones();
                 await events();
                 $(".loading").attr("style", "display: none");
             }
-            
+
+
+            async function AllPhones()
+            {
+                
+                let states = await new Promise((resolve, reject) => {    
+                                        
+                                        $.ajax({
+                                            data: {},
+                                            url: "/clients/phoneStatesPercent",
+                                            type: "GET",
+                                            dataType: "json",
+                                            headers:{
+                                                "Authorization": localStorage.getItem("token")
+                                            },
+                                            success: (response) => {
+                                                resolve(response);
+                                            },
+                                            error: (err) => {
+                                                reject(err);
+                                            }
+                                });
+                            });
+
+                console.log(states);
+                
+                $("#chart").empty();
+
+                var chart = new CanvasJS.Chart("chart", {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    width: 450,
+                    height: 300,
+                    legend:{
+                        cursor: "pointer"
+                    },
+                    data: [{
+                        type: "pie",
+                        showInLegend: true,
+                        toolTipContent: "{name}: <strong>{y}%</strong>",
+                        indexLabel: "{name} - {y}%",
+                        dataPoints: [
+                            { y: states.sudeste, name: "Sudeste", exploded: true },
+                            { y: states.sul, name: "Sul" },
+                            { y: states.centro_oeste, name: "Centro Oeste" },
+                            { y: states.norte, name: "Norte" },
+                            { y: states.nordeste, name: "Nordeste" }
+                        ]
+                    }]
+                });
+                chart.render();
+                $(".canvasjs-chart-canvas")[0].style.position = "unset";
+                $(".canvasjs-chart-canvas")[0].style.display = "flex";
+                $(".canvasjs-chart-credit").remove()
+
+            } 
         });
     </script>
 </body>

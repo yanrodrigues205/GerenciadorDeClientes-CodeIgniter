@@ -47,6 +47,10 @@
             document.getElementById("btnSend").addEventListener("click",()=>{
                 let data = sendData();
 
+                if(!data)
+                {
+                    alert("senha ou email incorreto!");
+                }
                 data.then((obj) => {
                     Swal.fire({
                         title: "Usuário authenticado com sucesso!",
@@ -54,7 +58,9 @@
                         icon: "success"
                     });
                     localStorage.setItem("token", obj.token);
+                    window.location.href = "/clients";
                 }); 
+
             });
 
             
