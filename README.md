@@ -17,6 +17,7 @@
  Senha = admin</pre>
 
  ## Descrição 🗯️
+ <sub>Breve explicação sobre o projeto</sub>
  - Este projeto é uma API Rest construída com PHP, possuindo a opção de criar, alterar e deletar clientes, para front-end foi utilizado BootStrap e JQuery, foram utilizadas algumas bibliotecas como InputMask, CanvasJS, SweetAlert e DataTable. Um sistema síncrono que não depende de "refresh" para acontecer, focado em otimização e experiência do usuário. Os gráficos são alimentados por rotas dentro da api, assim que feita qualquer operação o mesmo busca informações referentes ao momento atual, atualizando os grafícos e a tabela em tempo real. 
 
 ## Objetivo 🎖️
