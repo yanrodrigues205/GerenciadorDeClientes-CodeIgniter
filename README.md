@@ -1,14 +1,34 @@
 # AMZMP - CodeIgniter
-## Indíce
-- [Instalar](#instalar-)
-- [Objetivo](#objetivo)
-- [Descrição](#descrição)
-- [Ferramentas](#ferramentas)
-- [Licença](#licença)
+## Apresentação 📽️
+<sub>Vídeos demonstrativos do funcionamento do sistema.</sub>
+
+<details>
+  <summary>📊 Análise Gráfica</summary>
+https://github.com/yanrodrigues205/AMZMP-CodeIgniter/assets/92941649/b400e17a-9d68-4f67-8166-aace6346db28
+</details>
+
+<details>
+  <summary>👨‍💻 Login e adição de cliente</summary>
+https://github.com/yanrodrigues205/AMZMP-CodeIgniter/assets/92941649/dc50af2a-2383-4cb6-9007-cca98c0ecf92
+</details>
+
+<details>
+  <summary>✏️ Edição de cliente</summary>
+https://github.com/yanrodrigues205/AMZMP-CodeIgniter/assets/92941649/0ea52eb1-2740-410d-a3b5-c330d96ef708
+</details>
+
+<details>
+  <summary>🗑️ Remoção de cliente</summary>
+https://github.com/yanrodrigues205/AMZMP-CodeIgniter/assets/92941649/eed346b4-8217-4cd9-a05c-8fe7d7f0c00f
+</details>
+
+
+
+
 
 ## Instalar 🛠️
 <sub>Passo a passo de como instalar e rodar a aplicação na sua máquina.</sub>
-- Banco de Dados: Verifique de estar utilizando o banco de dados relacional MySql, e que o mesmo esteja alocado na porta default (:3306), certifique que o servidor está rodando. <pre>Endereço Default = http://localhost:3306/ </pre>
+- Banco de Dados: Verifique de estar utilizando o banco de dados relacional MySql, e que o mesmo esteja alocado na porta default (:3306), certifique que o servidor está rodando. <pre>default = http://localhost:3306/ </pre>
 - Git clone: pegue o endereço de clonagem do repositório aqui no GitHub em Code -> Local -> Clone -> HTTPS, execute: <pre>git clone ENDEREÇO_REPOSITÓRIO</pre>
 - Instalando dependências: entre na pasta raiz do projeto e execute o comando: <pre>composer install</pre>
 - Contruir tabelas: para que o projeto possa armazenar informações, deve ser utilizadas tabelas do banco de dados, então devemos rodas as migrations do projeto para a tabela ser gerada automaticamente, vá até a pasta raiz do projeto e execute: <pre>php spark migration</pre>
@@ -42,7 +62,7 @@
 
 ## Licença 🔑
   <pre>
-     MIT License 2024
+    The MIT License (MIT) &copy;
   </pre>
       
 
