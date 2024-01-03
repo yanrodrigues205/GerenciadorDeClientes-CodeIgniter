@@ -3,7 +3,7 @@
 - [Instalar](#instalar-)
 - [Objetivo](#objetivo)
 - [Descrição](#descrição)
-- [Tecnologias](#tecnologias)
+- [Ferramentas](#ferramentas)
 - [Licença](#licença)
 
 ## Instalar 🛠️
@@ -27,7 +27,7 @@
 - Quando for cadastrar um novo cliente o endereço deve ser gerado pela busca do CEP, para isso deve ser utilizado a API ViaCEP.
 - Utilzar PHP, se for utilizar algum framework, é recomendado CodeIgniter 3.1+.
 
-## Tecnologias 💻
+## Ferramentas 💻
 ### Front-End:
     - ☕JQuery
     - 🅱️BootStrap
@@ -39,7 +39,11 @@
      - 🐘PHP
      - 🔥CodeIgniter4
      - 💱JSON Web Token
-    
+
+## Licença 🔑
+  <pre>
+     MIT License 2024
+  </pre>
       
 
   
