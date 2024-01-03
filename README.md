@@ -17,5 +17,7 @@
 ## Objetivo 🎖️
 <sub>Detalhando os respectivos pontos a serem atingidos com a aplicação.</sub>
 - O objetivo do projeto foi a elaboração de um CRUD para clientes, ou seja um sistema que C=crie, R=leia, U=altere e D=apague.
-- Os sistema deve conter autenticação para que os dados não sejam acessados por "qualquer um", ou seja, deve ser verificado os dados para cada rota.
-- Quando for cadastrar um novo cliente o endereço deve ser gerado pela busca do CEP, para isso deve ser utilizado a API ViaCEP. 
+- O sistema deve conter autenticação para que os dados não sejam acessados por "qualquer um", ou seja, deve ser verificado as informações de usuário em cada respectiva "rota".
+- Quando for cadastrar um novo cliente o endereço deve ser gerado pela busca do CEP, para isso deve ser utilizado a API ViaCEP.
+- Utilzar CodeIgniter3.5+
+  
