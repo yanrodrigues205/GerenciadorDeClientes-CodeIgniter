@@ -3,7 +3,7 @@
 - [Instalar](#instalar-)
 - [Objetivo](#objetivo)
 - [Descrição](#descrição)
-- [Uso](#uso)
+- [Tecnologias](#tecnologias)
 - [Licença](#licença)
 
 ## Instalar 🛠️
@@ -26,5 +26,20 @@
 - O sistema deve conter autenticação para que os dados não sejam acessados por "qualquer um", ou seja, deve ser verificado as informações de usuário em cada respectiva "rota".
 - Quando for cadastrar um novo cliente o endereço deve ser gerado pela busca do CEP, para isso deve ser utilizado a API ViaCEP.
 - Utilzar PHP, se for utilizar algum framework, é recomendado CodeIgniter 3.1+.
+
+## Tecnologias 💻
+### Front-End:
+    - ☕JQuery
+    - 🅱️BootStrap
+    - ‼️SweetAlert
+    - 📊CanvasJS
+    - 📅DataTable
+    - 🗯️InputMask
+### Back-End:
+     - 🐘PHP
+     - 🔥CodeIgniter4
+     - 💱JSON Web Token
+    
+      
 
   
