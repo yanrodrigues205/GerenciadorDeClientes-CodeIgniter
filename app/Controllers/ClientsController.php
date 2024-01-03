@@ -3,6 +3,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use Exception;
 use App\Models\ClientsModel;
+date_default_timezone_set('America/Sao_Paulo');
 
 class ClientsController extends ResourceController
 {
@@ -172,6 +173,72 @@ class ClientsController extends ResourceController
     }
 
 
+    public function getNewsClients()
+    {
+        try
+        {
+            
+            $clients = $this->model->getField("created_at");
+           
+            $time = [
+                "one_hr" => 0,
+                "two_hrs" => 0,
+                "min45" => 0,
+                "min30" => 0,
+                "min15" => 0
+            ];
+
+            for($i = 0; $i < count($clients); $i++)
+            {
+                $now = new \DateTime();
+                $currentDate = $clients[$i]["created_at"];
+                $created_at = new \DateTime($currentDate);
+                $dif = $now->diff($created_at);
+
+
+                
+
+                if($dif->format("%y") == 0 && $dif->format("%m") == 0 && $dif->format("%d") == 0)
+                {
+                    //added on the same day
+                 
+                        if($dif->format("%h") == 2 && $dif->format("%i") <= 59){
+                            $time["two_hrs"] = $time["two_hrs"] + 1;
+                        }
+                        else if(($dif->format("%h") == 1 && $dif->format("%i") <= 59))
+                        {
+                            $time["one_hr"] = $time["one_hr"] + 1;
+                        }
+                        else if($dif->format("%i") <= 45 &&  $dif->format("%i") > 30 && $dif->format("%h") == 0)
+                        {
+                            $time["min45"] = $time["min45"] + 1;
+                        }
+                        else if($dif->format("%i") <= 30 &&  $dif->format("%i") > 15 && $dif->format("%h") == 0)
+                        {
+                            $time["min30"] = $time["min30"] + 1;
+                        }
+                        else if($dif->format("%i") <= 15 &&  $dif->format("%i") >= 0 && $dif->format("%h") == 0)
+                        {
+                            $time["min15"] = $time["min15"] + 1;
+                        }
+                }    
+            }       
+                 
+        
+            
+            return json_encode($time);
+        }
+        catch(Exception $err)
+        {
+            return $this->respond([
+                "statusCode" => 500,
+                "error" => $err,
+                "message" => "internal error in request get all phones!",
+            ]);     
+        }
+    }
+
+
     public function getAllPhones()
     {
         try
@@ -191,33 +258,30 @@ class ClientsController extends ResourceController
                 $sulDDD = [41, 42, 43, 44, 45, 46, 51, 53, 54, 55, 47, 48, 49];
                 $norteDDD = [68, 96, 92, 97, 91, 93, 94, 69, 95, 63];
                 $nordesteDDD = [82, 71, 73, 74, 75, 77, 85, 88, 98, 99, 83, 81, 87, 86, 89, 84, 79];
-                $centro_oesteDDD = [61, 62, 64, 65, 66, 67];
+                $centro_oesteDDD = [62, 64, 65, 66, 67, 61, 61];
 
-                
+                $passou =0;
                 for($i = 0; $i < count($phones); $i++)
                 {
-                    $ddd = substr($phones[$i]["phone"], 1,2);
+                    $ddd = $phones[$i]["phone"][1] . $phones[$i]["phone"][2];
                     if(array_search($ddd, $sudesteDDD))
                     {
                         $countStates["sudeste"] = $countStates["sudeste"] + 1;
                     }
-
-                    if(array_search($ddd, $nordesteDDD))
+                    else if(array_search($ddd, $nordesteDDD))
                     {
                         $countStates["nordeste"] = $countStates["nordeste"] + 1;
                     }
-
-                    if(array_search($ddd, $centro_oesteDDD))
+                    else if(array_search($ddd, $centro_oesteDDD))
                     {
                         $countStates["centro_oeste"] = $countStates["centro_oeste"] + 1;
+                        $passou = $passou + 1;
                     }
-
-                    if(array_search($ddd, $sulDDD))
+                    else if(array_search($ddd, $sulDDD))
                     {
                         $countStates["sul"] = $countStates["sul"] + 1;
                     }
-                    
-                    if(array_search($ddd, $norteDDD))
+                    else if(array_search($ddd, $norteDDD))
                     {
                         $countStates["norte"] = $countStates["norte"] + 1;
                     }

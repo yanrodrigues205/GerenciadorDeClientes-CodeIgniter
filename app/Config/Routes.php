@@ -22,6 +22,7 @@ use CodeIgniter\Router\RouteCollection;
     $routes->get('/clients/getbyid/(:num)','ClientsController::getCLientByID/$1', ["filter"=> "auth"]);
     $routes->get('/clients/getall','ClientsController::getAllClients', ["filter"=> "auth"]);
     $routes->get('/clients/phoneStatesPercent','ClientsController::getAllPhones', ["filter"=> "auth"]);
+    $routes->get('/clients/getNewsClients','ClientsController::getNewsClients');
 
 
     // -> USERS
