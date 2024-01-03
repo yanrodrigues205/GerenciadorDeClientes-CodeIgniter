@@ -1,6 +1,6 @@
 # AMZMP - CodeIgniter
 ## Indíce
-- [Instalar](#instalar)
+- [Instalar](#instalar-)
 - [Objetivo](#objetivo)
 - [Descrição](#descrição)
 - [Uso](#uso)
