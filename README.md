@@ -16,6 +16,9 @@
 - Login Default: <pre>Email = admin@admin.com
  Senha = admin</pre>
 
+ ## Descrição 🗯️
+ - Este projeto é uma API Rest construída com PHP, possuindo a opção de criar, alterar e deletar clientes, para front-end foi utilizado BootStrap e JQuery, foram utilizadas algumas bibliotecas como InputMask, CanvasJS, SweetAlert e DataTable. Um sistema síncrono que não depende de "refresh" para acontecer, focado em otimização e experiência do usuário. Os gráficos são alimentados por rotas dentro da api, assim que feita qualquer operação o mesmo busca informações referentes ao momento atual, atualizando os grafícos e a tabela em tempo real. 
+
 ## Objetivo 🎖️
 <sub>Detalhando os respectivos pontos a serem atingidos com a aplicação.</sub>
 - O objetivo do projeto foi a elaboração de um CRUD para clientes, ou seja um sistema que C=crie, R=leia, U=altere e D=apague.
