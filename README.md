@@ -1,4 +1,4 @@
-# AMZMP - CodeIgniter
+# Gerenciador de Clientes - CodeIgniter
 ## Apresentação 📽️
 <div align="center">
   <img src="https://github.com/yanrodrigues205/AMZMP-CodeIgniter/assets/92941649/a67f3ee9-cfdf-4f95-97c1-8762fd12ca06" width="500" height="250"/>
